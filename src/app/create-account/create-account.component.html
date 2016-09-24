@@ -28,7 +28,7 @@
           <input [formControl]="accountCreateForm.controls['email']" [class.form-control-warning]="!email.valid && email.touched" [class.form-control-success]="email.valid" type="email" class="form-control" name="email" id="email" required>
           <div [hidden]="!email.hasError('invalidEmail') || !email.touched"  class="form-control-feedback">A valid email is required.</div>
         </div>
-        <div class="form-group" [class.has-warning]="!password.valid && password.touched" [class.has-success]="password.valid && password.touched">
+        <div class="form-group" [class.has-warning]="!password.valid && password.touched" [class.has-success]="password.valid">
           <label class="col-form-label" for="password">Password</label>
           <input [formControl]="accountCreateForm.controls['password']" [class.form-control-warning]="!password.valid && password.touched" [class.form-control-success]="password.valid" type="password" class="form-control" name="password" id="password" required>
           <div [hidden]="!password.hasError('invalidLength') || !password.touched" class="form-control-feedback">Must be between 8-100 characters in length.</div>
@@ -38,10 +38,12 @@
           <div [hidden]="!password.hasError('missingSymbol') || !password.touched" class="form-control-feedback">Must contain one of the following symbols (!, @, #, $, %, ^, &, *).</div>
           <small [hidden]="password.touched" class="form-text text-muted">Must be between 8-100 characters, contain an uppercase letter, contain a lowercase letter, contain a number and one of the following symbols (!, @, #, $, %, ^, &, *).</small>
         </div>
-        <div class="form-group" [class.has-warning]="accountCreateForm.hasError('passwordMismatch') && verifyPassword.touched" [class.has-success]="!accountCreateForm.hasError('passwordMismatch') && verifyPassword.value.length">
+        <div class="form-group" [class.has-warning]="accountCreateForm.hasError('passwordMismatch') && verifyPassword.touched || !verifyPassword.valid && verifyPassword.touched" [class.has-success]="!accountCreateForm.hasError('passwordMismatch') && verifyPassword.value.length">
           <label class="col-form-label" for="verifyPassword">Verify password</label>
-          <input [formControl]="accountCreateForm.controls['verifyPassword']" [class.form-control-warning]="accountCreateForm.hasError('passwordMismatch') && verifyPassword.touched" [class.form-control-success]="!accountCreateForm.hasError('passwordMismatch')" type="password" class="form-control" name="verifyPassword" id="verifyPassword" required>
+          <input [formControl]="accountCreateForm.controls['verifyPassword']" [class.form-control-warning]="accountCreateForm.hasError('passwordMismatch') && verifyPassword.touched || !verifyPassword.valid && verifyPassword.touched" [class.form-control-success]="!accountCreateForm.hasError('passwordMismatch')" type="password" class="form-control" name="verifyPassword" id="verifyPassword" required>
           <div [hidden]="!accountCreateForm.hasError('passwordMismatch') || !verifyPassword.touched" class="form-control-feedback">Passwords must match.</div>
+          <div [hidden]="verifyPassword.valid || !verifyPassword.touched"  class="form-control-feedback">Password must be verified.</div>
+
         </div>
         <div class="form-group">
           <label for="bio">Bio <small class="text-muted">(optional)</small></label>

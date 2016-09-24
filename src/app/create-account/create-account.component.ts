@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { emailValidator, lowercaseValidator, uppercaseValidator, numberValidator, symbolValidator, lengthValidator, matchPasswords } from './create-account.validators';
+import { UserService } from '../services/user.service';
+import { User } from '../services/user.model';
 
 @Component({
   selector: 'app-create-account',
@@ -17,7 +20,7 @@ export class CreateAccountComponent implements OnInit {
   verifyPassword: AbstractControl;
   bio: AbstractControl;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private userService: UserService, private router: Router) {
     this.accountCreateForm = fb.group({
       'fname'           : ['', Validators.required],
       'lname'           : ['', Validators.required],
@@ -39,7 +42,9 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    alert('Submitted');
+    let user = new User(this.fname.value, this.lname.value, this.email.value, this.password.value, this.verifyPassword.value, this.bio.value);
+    this.userService.setUser(user);
+    this.router.navigate(['/']);
   }
 
 }

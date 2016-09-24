@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
+import { User } from './user.model';
 
 @Injectable()
 export class UserService {
-
-  private user = {
-    name: 'Phil Merrell',
-  };
+  public currentUser: BehaviorSubject<User> = new BehaviorSubject(null);
 
   constructor() {}
 
-  getUser() {
-    return this.user;
+  public getUser(): Observable<User> {
+    return this.currentUser.asObservable();
   }
 
-  setUser(user) {
-    this.user = user;
+  public setUser(user: User): void {
+    this.currentUser.next(user);
   }
-
-  
-
 }

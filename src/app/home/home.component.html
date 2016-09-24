@@ -1,8 +1,16 @@
-<div class="jumbotron">
+<div class="jumbotron" style=" background-size: cover; background-size: auto 100%;">
   <div class="container">
-    <h1>Meet Up</h1>
-    <p class="lead">The only fake event planner you'll ever need</p>
-    <button type="button" class="btn btn-primary btn-lg" (click)="goTo('/events')">View Events</button> <button type="button" class="btn btn-secondary btn-lg" (click)="goTo('/create-account')">Sign Up</button>
+    <div *ngIf="!currentUser">
+      <h1>Meet Up</h1>
+      <p class="lead">The only fake event planner you'll ever need</p>
+    </div>
+    <div *ngIf="currentUser">
+      <h1>Hey, {{currentUser.fname}}</h1>
+      <p class="lead">Get started planning your fake events</p>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg" (click)="goTo('/events')">View Events</button>
+    <button *ngIf="!currentUser" type="button" class="btn btn-secondary btn-lg" (click)="goTo('/create-account')">Sign Up</button>
+    <button *ngIf="currentUser" type="button" class="btn btn-success btn-lg" (click)="goTo('/create-event')">Create an event</button>
   </div>
 </div>
 <div class="container">
