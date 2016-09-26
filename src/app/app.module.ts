@@ -10,8 +10,11 @@ import { EventListComponent } from './event-list/event-list.component';
 import { HomeComponent } from './home/home.component';
 import { UserService } from './services/user.service';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { GoogleMapsService } from './services/google-maps.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TagInputModule } from 'ng2-tag-input';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +30,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     HttpModule,
     routing,
-    NgbModule
+    NgbModule,
+    TagInputModule
   ],
-  providers: [appRoutingProviders, UserService],
+  providers: [appRoutingProviders, UserService, GoogleMapsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

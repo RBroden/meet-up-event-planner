@@ -36,7 +36,7 @@ export class CreateAccountComponent implements OnInit {
     this.password = this.accountCreateForm.controls['password'];
     this.verifyPassword = this.accountCreateForm.controls['verifyPassword'];
     this.bio = this.accountCreateForm.controls['bio'];
-
+    
   }
 
   ngOnInit() {}

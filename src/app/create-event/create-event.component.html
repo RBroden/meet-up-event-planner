@@ -28,6 +28,53 @@
           <input [formControl]="createEventForm.controls['name']" [class.form-control-warning]="!name.valid && name.touched" [class.form-control-success]="name.valid" type="name" class="form-control" name="name" id="name" required>
           <div [hidden]="name.valid || !name.touched"  class="form-control-feedback">An event name is required.</div>
         </div>
+        <div class="form-group" [class.has-warning]="!eventType.valid && eventType.touched" [class.has-success]="eventType.valid && eventType.touched">
+          <label for="eventType">Select an event type</label>
+          <select [formControl]="createEventForm.controls['eventType']" [class.form-control-warning]="!eventType.valid && eventType.touched" [class.form-control-success]="eventType.valid" class="form-control" id="eventType">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <div [hidden]="eventType.valid || !eventType.touched"  class="form-control-feedback">An event type is required.</div>
+        </div>
+        <div class="form-group" [class.has-warning]="!host.valid && host.touched" [class.has-success]="host.valid && host.touched">
+          <label class="col-form-label" for="host">Event host</label>
+          <input [formControl]="createEventForm.controls['host']" [class.form-control-warning]="!host.valid && host.touched" [class.form-control-success]="host.valid" type="name" class="form-control" name="host" id="host" required>
+          <div [hidden]="host.valid || !host.touched"  class="form-control-feedback">An event host is required.</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="form-group" [class.has-warning]="!start.valid && start.touched" [class.has-success]="start.valid && start.touched">
+              <label class="col-form-label" for="start">Start time</label>
+              <input [formControl]="createEventForm.controls['start']" [class.form-control-warning]="!start.valid && start.touched" [class.form-control-success]="start.valid" type="datetime-local" class="form-control" name="start" id="start" required>
+              <div [hidden]="start.valid || !start.touched"  class="form-control-feedback">A valid start time is required.</div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="form-group" [class.has-warning]="!end.valid && end.touched" [class.has-success]="end.valid && end.touched">
+              <label class="col-form-label" for="end">Start time</label>
+              <input [formControl]="createEventForm.controls['end']" [class.form-control-warning]="!end.valid && end.touched" [class.form-control-success]="end.valid" type="datetime-local" class="form-control" name="end" id="end" required>
+              <div [hidden]="end.valid || !end.touched"  class="form-control-feedback">A valid end time is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" [class.has-warning]="!location.valid && location.touched" [class.has-success]="location.valid && location.touched">
+          <label class="col-form-label" for="location">Location</label>
+          <input [formControl]="createEventForm.controls['location']" [class.form-control-warning]="!location.valid && location.touched" [class.form-control-success]="location.valid" class="form-control" id="location" placeholder="Enter an address" (focus)="geolocate()" type="text">
+          <div [hidden]="location.valid || !location.touched" class="form-control-feedback">A valid location is required.</div>
+        </div>
+        <div class="form-group" [class.has-warning]="!guests.valid && guests.touched" [class.has-success]="guests.valid && guests.touched">
+          <label class="col-form-label" for="guests">Guests</label>
+          <tag-input formControlName="guests" [(ngModel)]='items' errorMessages="{}" placeholder="add a guest" secondaryPlaceholder="Add a guest" id="guests" required></tag-input>
+          <div [hidden]="guests.valid || !guests.touched"  class="form-control-feedback">Guests are required to create events.</div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message <small class="text-muted">(optional)</small></label>
+          <textarea [formControl]="createEventForm.controls['message']" name="message" class="form-control" id="message" rows="3"></textarea>
+          <small class="form-text text-muted">Would you like to give more information to your guests?</small>
+        </div>
       </div>
     </form>
   </div>
