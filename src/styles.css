@@ -3,3 +3,11 @@
 body {
     padding-top: 54px;
 }
+
+.tag-input {
+    border-bottom: 0px !important;
+}
+
+.tag-input--focused {
+    border-bottom: 0px !important;
+}

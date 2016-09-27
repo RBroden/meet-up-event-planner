@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-// import { emailValidator, lowercaseValidator, uppercaseValidator, numberValidator, symbolValidator, lengthValidator, matchPasswords } from './create-account.validators';
 import { UserService } from '../services/user.service';
 import { User } from '../services/user.model';
 import { GoogleMapsService } from '../services/google-maps.service';
+import { EventService } from '../services/event.service';
+import { Event } from '../services/event.model';
 
 @Component({
   selector: 'app-create-event',
@@ -23,9 +24,10 @@ export class CreateEventComponent implements OnInit {
   location: AbstractControl;
   message: AbstractControl;
 
-  items: any;
+  // Workaround to accomodate <tag-input> validation...
+  guestsTouched: boolean = false;
 
-  constructor(fb: FormBuilder, private googleMaps: GoogleMapsService) {
+  constructor(fb: FormBuilder, private googleMaps: GoogleMapsService, private eventService: EventService) {
     this.createEventForm = fb.group({
       'name'      : ['', Validators.required],
       'eventType' : ['', Validators.required],
@@ -45,21 +47,25 @@ export class CreateEventComponent implements OnInit {
     this.guests = this.createEventForm.controls['guests'];
     this.location = this.createEventForm.controls['location'];
     this.message = this.createEventForm.controls['message'];
-
-    function lengthValidator(control: FormControl): { [s: string]: boolean } {
-      if (control.value.length < 1) {
-        return {invalidLength: true}
-      }
-    }
-
   }
 
-  ngOnInit() {
-    
+  ngOnInit() {}
+
+  checkGuestList() {
+    this.guestsTouched = true;
   }
 
   geolocate() {
     this.googleMaps.geolocate();
+  }
+
+  updateEndTime() {
+    this.end.setValue(this.start.value);
+  }
+
+  onSubmit() {
+    let event = new Event(this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests.value, this.message.value);
+    this.eventService.addEvent(event);
   }
 
 }

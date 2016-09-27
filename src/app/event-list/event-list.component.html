@@ -1,61 +1,22 @@
 <div class="jumbotron">
   <div class="container">
     <h1>Events</h1>
+    <p class="lead text-muted" *ngIf="currentUser">Use the '+' button to add events.</p>
+    <p class="lead text-muted" *ngIf="!currentUser">Sign up to add events.</p>
   </div>
 </div>
 <div class="container">
   <button *ngIf="currentUser" class="create-event-fab" placement="top" ngbTooltip="Create an event" (click)="goTo('/create-event')">
     <i class="fa fa-plus"></i><span class="sr-only">Create an event</span>
   </button>
-  <h5><small>IN 4 HOURS:</small></h5>
+  <p>&nbsp;</p>
   <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <h5 class="list-group-item-heading">List group item heading</h5>
-      <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <a *ngFor="let event of events" href="#" class="list-group-item list-group-item-action">
+      <span>{{event.startMoment}}</span>
+      <h5 class="list-group-item-heading">{{event.name}}</h5>
+      <p class="list-group-item-text"><i class="fa fa-map-marker"></i> {{event.location}} <br>
+        <small><i class="fa fa-users"></i> {{event.guests.length}} people are going</small>
+      </p>
     </a>
   </div>
 </div>
