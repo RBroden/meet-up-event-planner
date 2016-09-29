@@ -27,7 +27,7 @@ export class CreateEventComponent implements OnInit {
   // Workaround to accomodate <tag-input> validation...
   guestsTouched: boolean = false;
 
-  constructor(fb: FormBuilder, private googleMaps: GoogleMapsService, private eventService: EventService) {
+  constructor(fb: FormBuilder, private googleMaps: GoogleMapsService, private eventService: EventService, private router: Router) {
     this.createEventForm = fb.group({
       'name'      : ['', Validators.required],
       'eventType' : ['', Validators.required],
@@ -47,12 +47,23 @@ export class CreateEventComponent implements OnInit {
     this.guests = this.createEventForm.controls['guests'];
     this.location = this.createEventForm.controls['location'];
     this.message = this.createEventForm.controls['message'];
+    
+    this.guests.setValue([]);
   }
 
   ngOnInit() {}
 
-  checkGuestList() {
+  checkGuestList(item) {
     this.guestsTouched = true;
+    
+    // Ugly workaround :(
+    if(item !== '') {
+      this.guests.value.push(item);
+    }
+    let input: Element = document.querySelector('input[formcontrolname="item"]');
+    input['value'] = '';
+    /////
+  
   }
 
   geolocate() {
@@ -66,6 +77,7 @@ export class CreateEventComponent implements OnInit {
   onSubmit() {
     let event = new Event(this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests.value, this.message.value);
     this.eventService.addEvent(event);
+    this.router.navigate(['/events']);
   }
 
 }

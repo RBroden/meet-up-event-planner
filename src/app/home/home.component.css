@@ -3,3 +3,9 @@
     text-align: center;
     padding: 20px;
 }
+
+.jumbotron.home {
+    background-image: url(assets/bg7.jpg);
+    background-size: cover;
+    background-position: center;
+}

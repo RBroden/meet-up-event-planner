@@ -1,15 +1,15 @@
-<div class="jumbotron">
+<div class="jumbotron event-list">
   <div class="container">
-    <h1>Events</h1>
-    <p class="lead text-muted" *ngIf="currentUser">Use the '+' button to add events.</p>
-    <p class="lead text-muted" *ngIf="!currentUser">Sign up to add events.</p>
+    <h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Events</h1>
+    <p [@fade]="fadeAnimation" style="opacity: 0" class="lead hero-tag" *ngIf="currentUser">Use the '+' button to add events.</p>
+    <p [@fade]="fadeAnimation" style="opacity: 0" class="lead hero-tag" *ngIf="!currentUser">Sign up to add events.</p>
   </div>
 </div>
 <div class="container">
   <button *ngIf="currentUser" class="create-event-fab" placement="top" ngbTooltip="Create an event" (click)="goTo('/create-event')">
     <i class="fa fa-plus"></i><span class="sr-only">Create an event</span>
   </button>
-  <p>&nbsp;</p>
+  <p *ngIf="currentUser">&nbsp;</p>
   <div class="list-group">
     <a *ngFor="let event of events" href="#" class="list-group-item list-group-item-action">
       <span>{{event.startMoment}}</span>

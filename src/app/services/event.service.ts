@@ -36,16 +36,6 @@ export class EventService {
   getSeed() {
     return [
       {
-        name: 'Tokyo Denim Franchise Conference',
-        eventType: 'Conference',
-        host: 'Tokyo Denim Inc.',
-        start: '2016-09-26T22:00',
-        end: '2016-09-26T22:00',
-        location: '23, Mooka, Tochigi Prefecture, Japan',
-        guests: ["Phil Merrell", "Ron Anderson", "Frank Smith"],
-        message: 'Bring all your franchise marketing materials for review'
-      },
-      {
         end: "2016-09-29T22:00",
         eventType:"Party",
         host: "Universal Studios",
@@ -56,7 +46,7 @@ export class EventService {
         start: "2016-09-29T22:00"
       },
       {
-        name: "Augmented Reality Drone Dolphin",
+        name: "Augmented Reality Dolphin Drone Demo",
         eventType: "Birthday",
         start: "2016-09-29T20:00",
         end: "2016-09-29T20:00",
@@ -64,6 +54,16 @@ export class EventService {
         location: "Beatson Hollow, Butte County, CA, United States",
         guests: ["aaa", "bbb", "name", "of", "people"],
         message: ""
+      },
+      {
+        name: 'Tokyo Denim Franchise Conference',
+        eventType: 'Conference',
+        host: 'Tokyo Denim Inc.',
+        start: '2016-09-26T22:00',
+        end: '2016-09-26T22:00',
+        location: '23, Mooka, Tochigi Prefecture, Japan',
+        guests: ["Phil Merrell", "Ron Anderson", "Frank Smith"],
+        message: 'Bring all your franchise marketing materials for review'
       }
     ];
   }
