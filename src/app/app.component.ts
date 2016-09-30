@@ -50,6 +50,7 @@ export class AppComponent {
   goTo(url, event) {
     event.preventDefault();
     this.hideNav = true;
+    this.menuAnimation = 'in';
     this.router.navigate([url]);
   }
 

@@ -3,28 +3,6 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { User } from '../services/user.model';
 
-
-// trigger('fadeInDown', [
-//       state('in', style({
-//         transform: 'translate3d(0, 0, 0)'
-//       })),
-//       transition('void => *', [
-//         animate(300, keyframes([
-//           style({opacity: 0, transform: 'translate3d(0, -100%, 0)', offset: 0}),
-//           style({opacity: 1, transform: 'translate3d(0, 15px, 0)', offset: 0.3}),
-//           style({opacity: 1, transform: 'translate3d(0, 0, 0)', offset: 1.0})
-//         ]))
-//       ]),
-//       transition('* => void', [
-//         animate(300, keyframes([
-//           style({opacity: 1, transform: 'translate3d(0, 0, 0)', offset: 0}),
-//           style({opacity: 1, transform: 'translate3d(0, -15px, 0)', offset: 0.7}),
-//           style({opacity: 0, transform: 'translate3d(0, 100%, 0)', offset: 1.0})
-//         ]))
-//       ])
-//     ]
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
