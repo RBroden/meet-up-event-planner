@@ -3,3 +3,11 @@
     background-size: cover;
     background-position: center;
 }
+
+#start {
+    min-height: 42px;
+}
+
+#end {
+    min-height: 42px;
+}
