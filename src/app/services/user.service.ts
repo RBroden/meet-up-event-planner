@@ -5,6 +5,7 @@ import { User } from './user.model';
 @Injectable()
 export class UserService {
   public currentUser: BehaviorSubject<User> = new BehaviorSubject(null);
+  private user: User;
 
   constructor() {}
 
@@ -13,6 +14,11 @@ export class UserService {
   }
 
   public setUser(user: User): void {
+    this.user = user;
     this.currentUser.next(user);
+  }
+
+  public userIsLoggedIn(): boolean {
+    return this.user ? true : false;
   }
 }

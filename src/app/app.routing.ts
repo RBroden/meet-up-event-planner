@@ -5,13 +5,14 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { CreateEventComponent } from './create-event/create-event.component';
 import { HomeComponent } from './home/home.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { AuthRouteGuard } from './shared/auth-route-guard';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'events', component: EventListComponent },
     { path: 'event/:id', component: EventDetailComponent },
     { path: 'create-account', component: CreateAccountComponent },
-    { path: 'create-event', component: CreateEventComponent }
+    { path: 'create-event', component: CreateEventComponent, canActivate: [ AuthRouteGuard ] }
 ];
 
 export const appRoutingProviders: any[] = [];

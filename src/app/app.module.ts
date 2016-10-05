@@ -12,13 +12,11 @@ import { EventService } from './services/event.service';
 import { UserService } from './services/user.service';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { GoogleMapsService } from './services/google-maps.service';
+import { AuthRouteGuard } from './shared/auth-route-guard';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ng2-tag-input';
 import { EventDetailComponent } from './event-detail/event-detail.component';
-
-
-enableProdMode();
 
 @NgModule({
   declarations: [
@@ -38,7 +36,7 @@ enableProdMode();
     NgbModule,
     TagInputModule
   ],
-  providers: [appRoutingProviders, UserService, EventService, GoogleMapsService],
+  providers: [appRoutingProviders, UserService, EventService, GoogleMapsService, AuthRouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
