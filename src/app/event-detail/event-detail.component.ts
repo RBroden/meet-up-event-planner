@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { Event } from '../services/event.model';
 
@@ -15,10 +15,11 @@ export class EventDetailComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.eventService.getCurrentEvent().subscribe(event => {
-      this.event = event;
-      console.log(this.event);
-    });
+
+    console.log(this.route.snapshot.params['id']);
+    this.eventService
+        .getCurrentEvent(this.route.snapshot.params['id'])
+        .subscribe(event => this.event = event);
   }
 
 }

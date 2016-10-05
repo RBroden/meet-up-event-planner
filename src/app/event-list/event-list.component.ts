@@ -51,11 +51,8 @@ export class EventListComponent implements OnInit {
   }
 
   goTo(url, param) {
+    console.log(param);
     this.router.navigate([url], param);
-  }
-
-  viewEventDetail(event: Event) {
-    this.eventService.setCurrentEvent(event);
   }
 
   triggerViewAnimation() {

@@ -7,14 +7,14 @@ import * as _ from 'lodash';
 @Injectable()
 export class EventService {
 
-  public events: Array<Event> = [];
+  private events: Array<Event> = [];
   public eventsObservable: BehaviorSubject<Event[]> = new BehaviorSubject(null);
-  public currentEvent: Event;
+  private currentEvent: Event;
   public currentEventObservable: BehaviorSubject<Event> = new BehaviorSubject(null);
-  public seed: Array<any> = this.getSeed();
+  private seed: Array<any> = this.getSeed();
 
   constructor() {
-    this.seed.forEach((obj, index) => {
+    this.seed.forEach((obj) => {
       let event = new Event(obj.id, obj.user, obj.name, obj.eventType, obj.host, obj.start, obj.end, obj.location, obj.guests, obj.message);
       this.events.push(event);
     });
@@ -22,7 +22,7 @@ export class EventService {
     this.updateEvents(this.events);
   }
 
-  addEvent(event: Event) {
+  addEvent(event: Event): void {
     this.events.push(event);
     this.updateEvents(this.events);
   }
@@ -35,15 +35,13 @@ export class EventService {
     return this.eventsObservable.asObservable();
   }
 
-  getCurrentEvent(): Observable<Event> {
+  getCurrentEvent(id): Observable<Event> {
+    let eventId = +id;
+    let event = _.find(this.events, {'id': eventId});
+    this.currentEventObservable.next(event);
     return this.currentEventObservable.asObservable();
   }
-
-  setCurrentEvent(event: Event) {
-    this.currentEventObservable.next(event);
-  } 
   
-
   getSeed() {
     return [
       {
