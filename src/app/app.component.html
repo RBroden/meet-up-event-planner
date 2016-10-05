@@ -3,6 +3,10 @@
     <i class="fa" [class.fa-bars]="hideNav" [class.fa-close]="!hideNav" aria-hidden="true"></i>
   </button>
   <a class="hidden-sm-up" href style="color: #fff;" (click)="goTo('/', $event)">Meet Up</a>
+  <div class="pull-xs-right">
+    <button *ngIf="!currentUser" type="button" class="btn btn-secondary hidden-sm-up" (click)="goTo('/create-account', $event)">Sign up</button>
+    <button *ngIf="currentUser" type="button" class="btn btn-secondary hidden-sm-up" (click)="logOut()">Log out</button>
+  </div>
   <div class="container">
     <div class="navbar-toggleable-xs" [class.collapse]="hideNav" id="navbar">
       <a class="navbar-brand hidden-xs-down" routerLink="/">Meet Up</a>
@@ -10,13 +14,13 @@
         <li class="nav-item">
           <a class="nav-link" href (click)="goTo('/events', $event)" routerLinkActive="active">Events</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="currentUser" class="nav-item">
           <a class="nav-link" href (click)="goTo('/create-event', $event)" routerLinkActive="active">Create</a>
         </li>
       </ul>
       <div class="pull-xs-right">
-        <button *ngIf="!currentUser" type="button" class="btn btn-secondary" (click)="goTo('/create-account', $event)">Sign up</button>
-        <button *ngIf="currentUser" type="button" class="btn btn-secondary" (click)="logOut()">Log out</button>
+        <button *ngIf="!currentUser" type="button" class="btn btn-secondary hidden-xs-down" (click)="goTo('/create-account', $event)">Sign up</button>
+        <button *ngIf="currentUser" type="button" class="btn btn-secondary hidden-xs-down" (click)="logOut()">Log out</button>
       </div>
     </div>
   </div>

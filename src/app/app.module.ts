@@ -15,6 +15,7 @@ import { GoogleMapsService } from './services/google-maps.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ng2-tag-input';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 
 enableProdMode();
@@ -25,7 +26,8 @@ enableProdMode();
     CreateAccountComponent,
     EventListComponent,
     HomeComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    EventDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -9,11 +9,13 @@ export class EventService {
 
   public events: Array<Event> = [];
   public eventsObservable: BehaviorSubject<Event[]> = new BehaviorSubject(null);
+  public currentEvent: Event;
+  public currentEventObservable: BehaviorSubject<Event> = new BehaviorSubject(null);
   public seed: Array<any> = this.getSeed();
 
   constructor() {
-    this.seed.forEach((obj) => {
-      let event = new Event(obj.name, obj.eventType, obj.host, obj.start, obj.end, obj.location, obj.guests, obj.message);
+    this.seed.forEach((obj, index) => {
+      let event = new Event(obj.id, obj.user, obj.name, obj.eventType, obj.host, obj.start, obj.end, obj.location, obj.guests, obj.message);
       this.events.push(event);
     });
 
@@ -33,9 +35,20 @@ export class EventService {
     return this.eventsObservable.asObservable();
   }
 
+  getCurrentEvent(): Observable<Event> {
+    return this.currentEventObservable.asObservable();
+  }
+
+  setCurrentEvent(event: Event) {
+    this.currentEventObservable.next(event);
+  } 
+  
+
   getSeed() {
     return [
       {
+        id: 1,
+        user: {fname: 'Phil', lname: 'Merrell', email: 'philbot5000@gmail.com', password: '', verifyPassword: '', bio: '' },
         end: "2016-09-29T22:00",
         eventType:"Party",
         host: "Universal Studios",
@@ -46,6 +59,8 @@ export class EventService {
         start: "2016-09-29T22:00"
       },
       {
+        id: 2,
+        user: {fname: 'Phil', lname: 'Merrell', email: 'philbot5000@gmail.com', password: '', verifyPassword: '', bio: '' },
         name: "Augmented Reality Dolphin Drone Demo",
         eventType: "Birthday",
         start: "2016-09-29T20:00",
@@ -56,6 +71,8 @@ export class EventService {
         message: ""
       },
       {
+        id: 3,
+        user: {fname: 'Phil', lname: 'Merrell', email: 'philbot5000@gmail.com', password: '', verifyPassword: '', bio: '' },
         name: 'Tokyo Denim Franchise Conference',
         eventType: 'Conference',
         host: 'Tokyo Denim Inc.',

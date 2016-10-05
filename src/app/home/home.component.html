@@ -2,11 +2,11 @@
   <div class="container">
     <div *ngIf="!currentUser">
       <h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Meet Up</h1>
-      <p [@fade]="fadeAnimation" style="opacity: 0" class="lead hero-tag">The only fake event planner you'll ever need</p>
+      <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag">The only fake event planner you'll ever need</p>
     </div>
     <div *ngIf="currentUser">
       <h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Hey, {{currentUser.fname}}</h1>
-      <p [@fade]="fadeAnimation" style="opacity: 0" class="lead hero-tag">Get started planning your fake events</p>
+      <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag">Get started planning your fake events</p>
     </div>
     <button type="button" class="btn btn-primary btn-lg" (click)="goTo('/events')">View Events</button>
     <button *ngIf="!currentUser" type="button" class="btn btn-secondary btn-lg" (click)="goTo('/create-account')">Sign Up</button>

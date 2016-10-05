@@ -23,12 +23,26 @@ export class CreateEventComponent implements OnInit {
   guests: AbstractControl;
   location: AbstractControl;
   message: AbstractControl;
+  guestsTouched: boolean = false; // Workaround to create <tag-input> component validation...
 
-  // Workaround to accomodate <tag-input> validation...
-  guestsTouched: boolean = false;
+  currentUser: any;
 
-  constructor(fb: FormBuilder, private googleMaps: GoogleMapsService, private eventService: EventService, private router: Router) {
-    this.createEventForm = fb.group({
+  constructor(
+    private fb: FormBuilder, 
+    private googleMaps: GoogleMapsService, 
+    private eventService: EventService, 
+    private router: Router, 
+    private userService: UserService
+  ) {}
+
+  ngOnInit() {
+    this.getCurrentUser();
+    this.buildForm();
+    
+  }
+
+  buildForm() {
+    this.createEventForm = this.fb.group({
       'name'      : ['', Validators.required],
       'eventType' : ['', Validators.required],
       'host'      : ['', Validators.required],
@@ -47,11 +61,8 @@ export class CreateEventComponent implements OnInit {
     this.guests = this.createEventForm.controls['guests'];
     this.location = this.createEventForm.controls['location'];
     this.message = this.createEventForm.controls['message'];
-    
     this.guests.setValue([]);
   }
-
-  ngOnInit() {}
 
   checkGuestList(item) {
     this.guestsTouched = true;
@@ -66,6 +77,12 @@ export class CreateEventComponent implements OnInit {
   
   }
 
+  getCurrentUser() {
+    this.userService.getUser().subscribe(user => {
+      this.currentUser = user;
+    });
+  }
+
   geolocate() {
     this.googleMaps.geolocate();
   }
@@ -75,7 +92,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   onSubmit() {
-    let event = new Event(this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests.value, this.message.value);
+    let event = new Event(1, this.currentUser, this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests.value, this.message.value);
     this.eventService.addEvent(event);
     this.router.navigate(['/events']);
   }

@@ -1,8 +1,8 @@
 <div class="jumbotron event-list">
   <div class="container">
     <h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Events</h1>
-    <p [@fade]="fadeAnimation" style="opacity: 0" class="lead hero-tag" *ngIf="currentUser">Use the '+' button to add events.</p>
-    <p [@fade]="fadeAnimation" style="opacity: 0" class="lead hero-tag" *ngIf="!currentUser">Sign up to add events.</p>
+    <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag" *ngIf="currentUser">Explore upcoming meet ups.</p>
+    <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag" *ngIf="!currentUser">Sign up to add events.</p>
   </div>
 </div>
 <div class="container">
@@ -11,12 +11,12 @@
   </button>
   <p *ngIf="currentUser">&nbsp;</p>
   <div class="list-group">
-    <a *ngFor="let event of events" href="#" class="list-group-item list-group-item-action">
+    <button *ngFor="let event of events" (click)="goTo('/event', event)" type="button" class="list-group-item list-group-item-action">
       <span>{{event.startMoment}}</span>
       <h5 class="list-group-item-heading">{{event.name}}</h5>
       <p class="list-group-item-text"><i class="fa fa-map-marker"></i> {{event.location}} <br>
         <small><i class="fa fa-users"></i> {{event.guests.length}} people are going</small>
       </p>
-    </a>
+    </button>
   </div>
 </div>

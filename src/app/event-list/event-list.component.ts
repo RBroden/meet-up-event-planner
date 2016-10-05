@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { User } from '../services/user.model';
 import { EventService } from '../services/event.service';
 import { Event } from '../services/event.model';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-event-list',
@@ -39,10 +40,8 @@ export class EventListComponent implements OnInit {
 
   getEvents() {
     this.eventService.getEvents().subscribe(events => {
-      this.events = events;
+      this.events = _.orderBy(events, ['start'], ['asc']);
     });
-
-    console.log(this.events);
   }
 
   getUser() {
@@ -51,8 +50,12 @@ export class EventListComponent implements OnInit {
     });
   }
 
-  goTo(url) {
-    this.router.navigate([url]);
+  goTo(url, param) {
+    this.router.navigate([url], param);
+  }
+
+  viewEventDetail(event: Event) {
+    this.eventService.setCurrentEvent(event);
   }
 
   triggerViewAnimation() {

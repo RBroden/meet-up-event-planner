@@ -1,19 +1,24 @@
 import * as moment from 'moment';
+import { User } from './user.model';
 
 export class Event {
   
+  id: number;
+  user: User;
   name: string;
   eventType: string;
   host: string;
   start: string;
   end: string;
-  location: string;
+  location: any;
   guests: Array<string>;
   message: string;
   startMoment: string;
   
 
-  constructor(name, eventType, host, start, end, location, guests, message) {
+  constructor(id, user, name, eventType, host, start, end, location, guests, message) {
+    this.id = id;
+    this.user = user;
     this.name = name;
     this.eventType = eventType;
     this.host = host;
