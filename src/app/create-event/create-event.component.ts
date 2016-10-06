@@ -26,6 +26,7 @@ export class CreateEventComponent implements OnInit {
   guestsTouched: boolean = false; // Workaround to create <tag-input> component validation...
 
   currentUser: any;
+  events: Event[];
 
   constructor(
     private fb: FormBuilder, 
@@ -37,8 +38,8 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
+    this.getEvents();
     this.buildForm();
-    
   }
 
   buildForm() {
@@ -74,7 +75,6 @@ export class CreateEventComponent implements OnInit {
     let input: Element = document.querySelector('input[formcontrolname="item"]');
     input['value'] = '';
     /////
-  
   }
 
   getCurrentUser() {
@@ -91,8 +91,19 @@ export class CreateEventComponent implements OnInit {
     this.end.setValue(this.start.value);
   }
 
+  getEvents() {
+    this.eventService.getEvents().subscribe(events => this.events = events);
+  }
+
+  updateLocationValue() {
+    let locationValue = (<HTMLInputElement>document.getElementById('location')).value;
+    this.location.setValue(locationValue);
+  }
+
   onSubmit() {
-    let event = new Event(1, this.currentUser, this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests.value, this.message.value);
+    let eventId = this.events.length + 1;
+    // this.eventService.getEvents get length for new id
+    let event = new Event(eventId, this.currentUser, this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests.value, this.message.value);
     this.eventService.addEvent(event);
     this.router.navigate(['/events']);
   }

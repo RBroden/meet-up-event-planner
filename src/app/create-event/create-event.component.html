@@ -49,7 +49,7 @@
           </div>
           <div class="form-group" [class.has-warning]="!location.valid && location.touched" [class.has-success]="location.valid && location.touched">
             <label class="col-form-label" for="location">Location</label>
-            <input [formControl]="createEventForm.controls['location']" [class.form-control-warning]="!location.valid && location.touched" [class.form-control-success]="location.valid" class="form-control" id="location" placeholder="Enter an address" (focus)="geolocate()" type="text">
+            <input [formControl]="createEventForm.controls['location']" [class.form-control-warning]="!location.valid && location.touched" [class.form-control-success]="location.valid" class="form-control" id="location" placeholder="Enter an address" (focus)="geolocate()" (blur)="updateLocationValue()" type="text" required>
             <div [hidden]="location.valid || !location.touched" class="form-control-feedback">A location is required.</div>
           </div>
           <div class="form-group" [class.has-warning]="!guests.value.length && guestsTouched" [class.has-success]="guests.value.length && guestsTouched">
