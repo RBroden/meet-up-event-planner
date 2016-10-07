@@ -13,20 +13,31 @@ export class Event {
   location: any;
   guests: Array<string>;
   message: string;
-  startMoment: string;
+  startDate: Object;
+  endDate: Object;
+  mapLink: string;
+  mapImage: string;
+
   
 
-  constructor(id, user, name, eventType, host, start, end, location, guests, message) {
+  constructor(id, user, name, eventType, host, start, end, location, guests, message, mapLink) {
     this.id = id;
     this.user = user;
     this.name = name;
     this.eventType = eventType;
     this.host = host;
-    this.start = start;
-    this.end = end;
     this.location = location;
+    this.mapLink = mapLink;
     this.guests = guests;
     this.message = message;
-    this.startMoment = moment(start).format('MMMM Do YYYY [at] hh:mm a');
+    this.mapImage = "https://maps.googleapis.com/maps/api/staticmap?center="+encodeURIComponent(location)+"&scale=2&zoom=14&size=640x640&maptype=roadmap&key=AIzaSyC5-1er5cL2OCpfYLu7rVzt_bmRJHb9Uck";
+    this.startDate = {
+      moment: moment(start).format('MMMM Do YYYY [at] hh:mm a'),
+      raw: start
+    };
+    this.endDate = {
+      moment: moment(end).format('MMMM Do YYYY [at] hh:mm a'),
+      raw: end
+    };
   }
 }

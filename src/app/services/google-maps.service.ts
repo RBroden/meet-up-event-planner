@@ -6,55 +6,39 @@ export class GoogleMapsService {
     loadAPI: Promise<any>
     placeSearch: any;
     autocomplete: any;
-    location: any = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-    };
+    place: any;
 
     constructor() {
-        this.loadAPI = new Promise((resolve) => {
-            // Set an 'initAutoComplete' function on the global scope for Google Maps API callback
-            window['initAutoComplete'] = (ev) => {
-                // Create the autocomplete object, restricting the search to geographical
-                // location types.
-                this.autocomplete = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */(document.getElementById('location')),
-                {types: ['geocode']});
 
-                // When the user selects an address from the dropdown, populate the address
-                // fields in the form.
+        if(typeof window.initAutoComplete === 'undefined') {
+            this.loadAPI = new Promise((resolve) => {
+                // Set an 'initAutoComplete' function on the global scope for Google Maps API callback
+                window['initAutoComplete'] = (ev) => {
+                    // Create the autocomplete object, restricting the search to geographical
+                    // location types.
+                    this.autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */(document.getElementById('location')),
+                    {types: ['geocode']});
 
-                this.autocomplete.addListener('place_changed', this.fillInAddress.bind(this));
-            }
+                    // When the user selects an address from the dropdown, populate the address
+                    // fields in the form.
 
-            this.loadScript();
+                    this.autocomplete.addListener('place_changed', this.setPlace.bind(this));
+                }
 
-        });
+                this.loadScript();
+
+            });
+        }
     }
 
-    fillInAddress(place) {
-        // Get the place details from the autocomplete object.
-        var place = this.autocomplete.getPlace();
-        console.log(place);
+    setPlace() {
+        this.place = this.autocomplete.getPlace();
+        console.log(this.place);
+    }
 
-        for (var component in this.location) {
-            // document.getElementById(component).value = '';
-            // document.getElementById(component).disabled = false;
-        }
-
-        // // Get each component of the address from the place details
-        // // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-            // var addressType = place.address_components[i].types[0];
-            // if (componentForm[addressType]) {
-            // var val = place.address_components[i][componentForm[addressType]];
-            // document.getElementById(addressType).value = val;
-            // }
-        }
+    getPlace() {
+        return this.place;
     }
 
     geolocate() {

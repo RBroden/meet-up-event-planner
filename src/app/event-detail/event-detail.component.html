@@ -1,3 +1,18 @@
+<div class="jumbotron" style="background-position: center; background-size: 100%;" [ngStyle]="{'background-image': 'url('+ event.mapImage +')'}">
+</div>
 <div class="container">
-  <h1>{{event.name}}</h1>
+  <div class="card" style="margin-top: -60px; margin-left: auto; margin-right: auto; max-width: 600px;">
+    <div class="card-block">
+      <h2 class="card-title">{{event.name}} <span class="event-type-tag">{{event.eventType}}</span></h2>
+      <small class="text-muted">Hosted by {{event.host}}</small>
+
+      <p>
+        <i class="fa fa-map-marker"></i>
+        <a *ngIf="mapLink !== ''" [href]="event.mapLink" target="_blank" class="">{{event.location}}</a>
+        <span *ngIf="mapLink === ''" class="">{{event.location}}</span>
+      </p>
+      <p>{{event.startDate.moment}} to {{event.endDate.moment}}</p>
+      <pre>{{event | json}}</pre>
+    </div>
+  </div>
 </div>

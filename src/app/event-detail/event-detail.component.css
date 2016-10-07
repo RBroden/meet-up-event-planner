@@ -1,0 +1,11 @@
+.event-type-tag {
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.05rem;
+    background: #efefef;
+    color: #222;
+    border-radius: 16px;
+    height: 32px;
+    line-height: 32px;
+    padding: 7px;
+}

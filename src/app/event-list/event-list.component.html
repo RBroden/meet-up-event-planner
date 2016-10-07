@@ -12,7 +12,7 @@
   <p *ngIf="currentUser">&nbsp;</p>
   <div class="list-group">
     <a *ngFor="let event of events" [routerLink]="['/event', event.id]" class="list-group-item list-group-item-action">
-      <span>{{event.startMoment}}</span>
+      <span>{{event.startDate.moment}}</span>
       <h5 class="list-group-item-heading">{{event.name}}</h5>
       <p class="list-group-item-text"><i class="fa fa-map-marker"></i> {{event.location}} <br>
         <small><i class="fa fa-users"></i> {{event.guests.length}} people are going</small>

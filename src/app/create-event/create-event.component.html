@@ -17,6 +17,7 @@
           <div class="form-group" [class.has-warning]="!eventType.valid && eventType.touched" [class.has-success]="eventType.valid && eventType.touched">
             <label for="eventType">Select an event type</label>
             <select [formControl]="createEventForm.controls['eventType']" [class.form-control-warning]="!eventType.valid && eventType.touched" [class.form-control-success]="eventType.valid" class="form-control" id="eventType">
+              <option value="" disabled selected>Event types</option>
               <option>Concert</option>
               <option>Party</option>
               <option>Conference</option>
@@ -63,7 +64,7 @@
             <textarea [formControl]="createEventForm.controls['message']" name="message" class="form-control" id="message" rows="3"></textarea>
             <small class="form-text text-muted">Would you like to give more information to your guests?</small>
           </div>
-        <button type="submit" [disabled]="!createEventForm.valid && !guests.value.length" class="btn btn-primary btn-lg btn-block">Submit</button>
+        <button type="submit" [disabled]="(!createEventForm.valid && !guests.value.length)" class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>
       </div>
     </form>

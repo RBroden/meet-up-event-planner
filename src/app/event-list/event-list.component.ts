@@ -40,7 +40,7 @@ export class EventListComponent implements OnInit {
 
   getEvents() {
     this.eventService.getEvents().subscribe(events => {
-      this.events = _.orderBy(events, ['start'], ['asc']);
+      this.events = _.orderBy(events, ['startDate.raw'], ['asc']);
     });
   }
 
