@@ -45,6 +45,7 @@ export class AppComponent {
 
   logOut() {
     this.userService.setUser(null);
+    this.router.navigate(['/']);
   }
 
   goTo(url, event) {

@@ -4,8 +4,8 @@
   </button>
   <a class="hidden-sm-up" href style="color: #fff;" (click)="goTo('/', $event)">Meet Up</a>
   <div class="pull-xs-right">
-    <button *ngIf="!currentUser" type="button" class="btn btn-secondary hidden-sm-up" (click)="goTo('/create-account', $event)">Sign up</button>
-    <button *ngIf="currentUser" type="button" class="btn btn-secondary hidden-sm-up" (click)="logOut()">Log out</button>
+    <button *ngIf="!currentUser" type="button" class="btn btn-outline-secondary hidden-sm-up" (click)="goTo('/create-account', $event)">Sign up</button>
+    <button *ngIf="currentUser" type="button" class="btn btn-outline-secondary hidden-sm-up" (click)="logOut()">Log out</button>
   </div>
   <div class="container">
     <div class="navbar-toggleable-xs" [class.collapse]="hideNav" id="navbar">
@@ -19,8 +19,8 @@
         </li>
       </ul>
       <div class="pull-xs-right">
-        <button *ngIf="!currentUser" type="button" class="btn btn-secondary hidden-xs-down" (click)="goTo('/create-account', $event)">Sign up</button>
-        <button *ngIf="currentUser" type="button" class="btn btn-secondary hidden-xs-down" (click)="logOut()">Log out</button>
+        <button *ngIf="!currentUser" type="button" class="btn btn-outline-secondary hidden-xs-down" (click)="goTo('/create-account', $event)">Sign up</button>
+        <button *ngIf="currentUser" type="button" class="btn btn-outline-secondary hidden-xs-down" (click)="logOut()">Log out</button>
       </div>
     </div>
   </div>
