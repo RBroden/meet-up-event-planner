@@ -53,18 +53,24 @@
             <input [formControl]="createEventForm.controls['location']" [class.form-control-warning]="!location.valid && location.touched" [class.form-control-success]="location.valid" class="form-control" id="location" placeholder="Enter an address" (focus)="geolocate()" (blur)="updateLocationValue()" type="text" required>
             <div [hidden]="location.valid || !location.touched" class="form-control-feedback">A location is required.</div>
           </div>
-          <div class="form-group" [class.has-warning]="guests.touched && !guestList.length" [class.has-success]="guests.touched && guestList.length">
+          <div class="form-group" [class.has-warning]="!guests.value.length && guestsTouched" [class.has-success]="guests.value.length && guestsTouched">
+            <label class="col-form-label" for="guests">Guest list</label>
+            <tag-input (onBlur)="checkGuestList($event)" [formControl]="createEventForm.controls['guests']" [(ngModel)]='guests.value' placeholder="Add a guest" secondaryPlaceholder="Hit enter to add name" class="form-control" id="guests" required></tag-input>
+            <div [hidden]="guests.value.length || !guestsTouched"  class="form-control-feedback">Guests are required to create events.</div>
+            <small class="form-text text-muted">To add multiple guests, type a name and hit the enter key.</small>
+          </div>
+          <!--<div class="form-group" [class.has-warning]="guests.touched && !guestList.length" [class.has-success]="guests.touched && guestList.length">
             <label class="col-form-label" for="guests">Guest list</label>
             <input [formControl]="createEventForm.controls['guests']" [class.form-control-warning]="!guestList.length || guests.touched" [class.form-control-success]="guestList.length" (keyup)="checkGuestList($event)" class="form-control" id="guests" placeholder="Hit enter to add multiple" type="text">
             <div [hidden]="!guests.touched || guestList.length" class="form-control-feedback">At least one guest is required.</div>
-            <span class="guest-tag" *ngFor="let guest of guestList">{{guest}}<button (click)="removeGuest(guest)" type="button"><i class="fa fa-close"></i></button></span>
-          </div>
+            <span class="guest-tag" *ngFor="let guest of guestList">{{guest}}<button (click)="removeGuest(guest)" [attr.aria-label]="delete" type="button"><i class="fa fa-close"></i></button></span>
+          </div>-->
           <div class="form-group">
             <label for="message">Message <small class="text-muted">(optional)</small></label>
             <textarea [formControl]="createEventForm.controls['message']" name="message" class="form-control" id="message" rows="3"></textarea>
             <small class="form-text text-muted">Would you like to give more information to your guests?</small>
           </div>
-          <button type="button" (click)="onSubmit()" [disabled]="(!createEventForm.valid || !guestList.length)" class="btn btn-primary btn-lg btn-block">Submit</button>
+          <button type="button" (click)="onSubmit()" [disabled]="(!createEventForm.valid || !guests.value.length)" class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>
       </div>
     </form>

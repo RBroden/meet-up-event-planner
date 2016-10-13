@@ -59,7 +59,7 @@ export class EventListComponent implements OnInit {
     setTimeout(() => {
       this.titleAnimation = 'fadeInDown';
       this.fadeAnimation = 'fadeIn';
-    }, 300)
+    }, 300);
   }
 
 }

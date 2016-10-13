@@ -23,8 +23,9 @@ export class CreateEventComponent implements OnInit {
   guests: AbstractControl;
   location: AbstractControl;
   message: AbstractControl;
-  // guestsTouched: boolean = false; // Workaround to create <tag-input> component validation...
-  guestList: Array<string> = [];
+  guestsTouched: boolean = false; // Workaround to create <tag-input> component validation...
+  // guestList: Array<string> = [];
+  
 
   currentUser: any;
   events: Event[];
@@ -44,6 +45,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   buildForm() {
+    this.googleMaps.initAutoComplete();
     this.createEventForm = this.fb.group({
       'name'      : ['', Validators.required],
       'eventType' : ['', Validators.required],
@@ -63,23 +65,12 @@ export class CreateEventComponent implements OnInit {
     this.guests = this.createEventForm.controls['guests'];
     this.location = this.createEventForm.controls['location'];
     this.message = this.createEventForm.controls['message'];
+    this.guests.setValue([]);
   }
 
-  checkGuestList(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    if(event.which === 13) {
-      if(this.guests.value !== '') {
-        this.guestList.push(this.guests.value);
-        console.log(this.guests.value);
-        this.guests.setValue('');
-      }
-      console.log(this.guestList);
-    }
+  checkGuestList(item) {
     
-  
-    
-    // this.guestsTouched = true;
+    this.guestsTouched = true;
     
     // Ugly workaround :(
     // if(item !== '') {
@@ -113,17 +104,11 @@ export class CreateEventComponent implements OnInit {
     this.location.setValue(locationValue);
   }
 
-  removeGuest(guest) {
-    let index = this.guestList.indexOf(guest);
-    console.log(index);
-    this.guestList.splice(index, 1);
-  }
-
   onSubmit() {
     let eventId = this.events.length + 1;
-    let event = new Event(eventId, this.currentUser, this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guestList, this.message.value, this.googleMaps.getPlace().url);
+    let event = new Event(eventId, this.currentUser, this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests, this.message.value, this.googleMaps.getPlace().url);
     this.eventService.addEvent(event);
-    this.router.navigate(['/events']);
+    this.router.navigate(['/']);
   }
 
 }

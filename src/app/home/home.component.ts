@@ -1,4 +1,4 @@
-import { Component, OnInit, trigger, state, style, transition, animate, keyframes } from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { User } from '../services/user.model';
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.titleAnimation = 'fadeInDown';
       this.fadeAnimation = 'fadeIn';
-    }, 300)
+    }, 300);
   }
 
 }

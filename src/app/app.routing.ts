@@ -8,8 +8,8 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AuthRouteGuard } from './shared/auth-route-guard';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'events', component: EventListComponent },
+    // { path: '', component: HomeComponent },
+    { path: '', component: EventListComponent },
     { path: 'event/:id', component: EventDetailComponent },
     { path: 'create-account', component: CreateAccountComponent },
     { path: 'create-event', component: CreateEventComponent, canActivate: [ AuthRouteGuard ] }

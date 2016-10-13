@@ -1,8 +1,17 @@
 <div class="jumbotron event-list">
   <div class="container">
-    <h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Events</h1>
+    <!--<h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Events</h1>
     <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag" *ngIf="currentUser">Explore upcoming meet ups.</p>
-    <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag" *ngIf="!currentUser">Sign up to add events.</p>
+    <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag" *ngIf="!currentUser">Sign up to add events.</p>-->
+    <div *ngIf="!currentUser">
+      <h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Meet Up</h1>
+      <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag">The only fake event planner you'll ever need</p>
+      <button type="button" class="btn btn-secondary btn-lg" (click)="goTo('/create-account')">Sign Up</button>
+    </div>
+    <div *ngIf="currentUser">
+      <h1 [@title]="titleAnimation" style="opacity: 0" class="hero-header">Hey, {{currentUser.fname}}</h1>
+      <p [@fade]="fadeAnimation" style="opacity: 0" class="hero-tag">Get started planning your fake events</p>
+    </div>
   </div>
 </div>
 <div class="container">

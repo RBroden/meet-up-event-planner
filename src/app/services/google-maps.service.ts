@@ -8,28 +8,32 @@ export class GoogleMapsService {
     autocomplete: any;
     place: any;
 
-    constructor() {
+    constructor() {}
 
-        if(typeof window.initAutoComplete === 'undefined') {
-            this.loadAPI = new Promise((resolve) => {
-                // Set an 'initAutoComplete' function on the global scope for Google Maps API callback
-                window['initAutoComplete'] = (ev) => {
-                    // Create the autocomplete object, restricting the search to geographical
-                    // location types.
-                    this.autocomplete = new google.maps.places.Autocomplete(
-                    /** @type {!HTMLInputElement} */(document.getElementById('location')),
-                    {types: ['geocode']});
+    initAutoComplete() {
+        this.loadAPI = new Promise((resolve) => {
+            // Set an 'initAutoComplete' function on the global scope for Google Maps API callback
+            window['initAutoComplete'] = (ev) => {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                this.autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('location')),
+                {types: ['geocode']});
 
-                    // When the user selects an address from the dropdown, populate the address
-                    // fields in the form.
+                console.log(this.autocomplete);
 
-                    this.autocomplete.addListener('place_changed', this.setPlace.bind(this));
-                }
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
 
+                this.autocomplete.addListener('place_changed', this.setPlace.bind(this));
+            }
+
+            // if(typeof window.initAutoComplete === 'undefined') {
+                console.log(window.initAutoComplete);
                 this.loadScript();
+            // }
 
-            });
-        }
+        });
     }
 
     setPlace() {
