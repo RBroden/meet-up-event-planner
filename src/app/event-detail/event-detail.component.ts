@@ -15,11 +15,12 @@ export class EventDetailComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    console.log(this.route.snapshot.params['id']);
     this.eventService
         .getCurrentEvent(this.route.snapshot.params['id'])
-        .subscribe(event => this.event = event);
+        .subscribe(event => {
+          this.event = event
+          console.log(event);
+        });
   }
 
 }

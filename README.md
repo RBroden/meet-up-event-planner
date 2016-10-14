@@ -2,6 +2,7 @@
 This app was created for the [Udacity Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree-by-google--nd802).
 
 Since one of my goals this year is to continue the transition from Angular to Angular 2, I chose to create this app using Angular 2 using [angular-cli](https://github.com/angular/angular-cli).
+The angular-cli builds in best practices such as bundling and minification for production builds, linting and more.  Unit tests can be run via Karma using the `ng test` command.  e2e tests are run via Protractor using the `ng e2e` command.
 
 ## High Level Lessons Learned
 * *Forms* - There are two options for creating forms in Angular 2 template-driven and reactive forms. Since reactive forms are created as properties on the component's class they 
