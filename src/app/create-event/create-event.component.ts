@@ -25,7 +25,6 @@ export class CreateEventComponent implements OnInit {
   message: AbstractControl;
   guestsTouched: boolean = false; // Workaround to create <tag-input> component validation...
   // guestList: Array<string> = [];
-  
 
   currentUser: any;
   events: Event[];
@@ -54,7 +53,7 @@ export class CreateEventComponent implements OnInit {
       'end'       : ['', Validators.required],
       'guests'    : [''],
       'location'  : ['', Validators.required],
-      'message'   : ['']    
+      'message'   : ['']
     });
 
     this.name = this.createEventForm.controls['name'];
@@ -69,16 +68,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   checkGuestList(item) {
-    
     this.guestsTouched = true;
-    
-    // Ugly workaround :(
-    // if(item !== '') {
-    //   this.guests.value.push(item);
-    // }
-    // let input: Element = document.querySelector('input[formcontrolname="item"]');
-    // input['value'] = '';
-    ///
   }
 
   getCurrentUser() {
@@ -106,7 +96,7 @@ export class CreateEventComponent implements OnInit {
 
   onSubmit() {
     let eventId = this.events.length + 1;
-    let event = new Event(eventId, this.currentUser, this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests, this.message.value, this.googleMaps.getPlace().url);
+    let event = new Event(eventId, this.currentUser, this.name.value, this.eventType.value, this.host.value, this.start.value, this.end.value, this.location.value, this.guests.value, this.message.value, this.googleMaps.getPlace().url);
     this.eventService.addEvent(event);
     this.router.navigate(['/']);
   }
