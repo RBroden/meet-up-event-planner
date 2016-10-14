@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from '../services/user.model';
 import { GoogleMapsService } from '../services/google-maps.service';
@@ -24,16 +24,16 @@ export class CreateEventComponent implements OnInit {
   location: AbstractControl;
   message: AbstractControl;
   guestsTouched: boolean = false; // Workaround to create <tag-input> component validation...
-  // guestList: Array<string> = [];
 
-  currentUser: any;
+
+  currentUser: User;
   events: Event[];
 
   constructor(
-    private fb: FormBuilder, 
-    private googleMaps: GoogleMapsService, 
-    private eventService: EventService, 
-    private router: Router, 
+    private fb: FormBuilder,
+    private googleMaps: GoogleMapsService,
+    private eventService: EventService,
+    private router: Router,
     private userService: UserService
   ) {}
 
