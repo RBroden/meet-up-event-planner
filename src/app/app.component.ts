@@ -1,5 +1,5 @@
-import { Component, trigger, state, transition, style, animate } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, trigger, state, transition, style, animate } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { UserService } from './services/user.service';
 import { User } from './services/user.model';
 
@@ -21,18 +21,30 @@ import { User } from './services/user.model';
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   currentUser: User;
   hideNav: boolean = true;
   menuAnimation: string = 'in';
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService) {}
+
+  ngOnInit() {
     this.getCurrentUser();
+    this.scrollToTop();
   }
 
   signUp() {
     this.router.navigate(['/create-account']);
+  }
+
+  scrollToTop() {
+    this.router.events.subscribe((evt) => {
+        if (!(evt instanceof NavigationEnd)) {
+            return;
+        }
+        document.body.scrollTop = 0;
+    });
   }
 
   getCurrentUser() {
