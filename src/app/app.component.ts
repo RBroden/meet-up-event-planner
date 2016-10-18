@@ -57,13 +57,11 @@ export class AppComponent {
 
   toggleNavbar() {
     this.hideNav = !this.hideNav;
-    if(this.hideNav) {
+    if (this.hideNav) {
       this.menuAnimation = 'in';
     } else {
       this.menuAnimation = 'out';
     }
   }
 
-
-  
 }

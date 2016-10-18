@@ -2,7 +2,7 @@ import * as moment from 'moment';
 import { User } from './user.model';
 
 export class Event {
-  
+
   id: number;
   user: User;
   name: string;
@@ -18,8 +18,6 @@ export class Event {
   mapLink: string;
   mapImage: string;
 
-  
-
   constructor(id, user, name, eventType, host, start, end, location, guests, message, mapLink) {
     this.id = id;
     this.user = user;
@@ -30,7 +28,7 @@ export class Event {
     this.mapLink = mapLink;
     this.guests = guests;
     this.message = message;
-    this.mapImage = "https://maps.googleapis.com/maps/api/staticmap?center="+encodeURIComponent(location)+"&scale=2&zoom=14&size=640x640&maptype=roadmap&key=AIzaSyC5-1er5cL2OCpfYLu7rVzt_bmRJHb9Uck";
+    this.mapImage = 'https://maps.googleapis.com/maps/api/staticmap?center=' + encodeURIComponent(location) + '&scale=2&zoom=14&size=640x640&maptype=roadmap&key=AIzaSyC5-1er5cL2OCpfYLu7rVzt_bmRJHb9Uck';
     this.startDate = {
       moment: moment(start).format('MMMM Do YYYY [at] hh:mm a'),
       raw: start
