@@ -1,6 +1,6 @@
 import { CreateAccountPage } from './create-account.po';
 
-describe('meet-up-event-planner App', function() {
+describe('Create event view', function() {
   let page: CreateAccountPage;
 
   beforeEach(() => {
@@ -9,6 +9,12 @@ describe('meet-up-event-planner App', function() {
 
   it('should display message saying create an account', () => {
     page.navigateTo();
-    expect(page.getWelcomeText()).toEqual('Create an account');
+    expect(page.getCreateAccountText()).toEqual('Create an account');
+  });
+
+  it('should allow a user to create an account', () => {
+    page.navigateTo();
+    page.createUser();
+    expect(page.getWelcomeText()).toEqual('Hey, Phil');
   });
 });
