@@ -10,7 +10,7 @@ Using a framework such as Angular made the form validation for both account crea
 In addition the [ChromeVox](http://www.chromevox.com/) plugin is a fantastic tool for ensuring web apps work well for screen readers.
 
 ## Running the app locally
-Clone the git repository and install the [angular-cli](npm install -g angular-cli) tool globally `npm install -g angular-cli`. Run `npm install` from the project's directory. This will install the projects dependencies and allow you to run a development server described below.
+Clone the git repository and install the angular-cli tool globally `npm install -g angular-cli`. Run `npm install` from the project's directory. This will install the projects dependencies and allow you to run a development server described below. For more information about the angular-cli build and delivery process, please visit the [angular-cli](npm install -g angular-cli) github page.
 
 ## Development server
 Run `ng serve` for a local dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
