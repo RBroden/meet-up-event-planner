@@ -2,7 +2,7 @@
 This app was created for the [Udacity Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree-by-google--nd802).
 
 Since one of my goals this year is to continue the transition from Angular to Angular 2, I chose to create this app with Angular 2 [angular-cli](https://github.com/angular/angular-cli).
-The angular-cli builds in best practices such as bundling and minification for production builds, linting, test scaffolding and more. Directions for install the application, and running the tests can be found below.
+The angular-cli builds in best practices such as bundling and minification for production builds, linting, test scaffolding and more. Directions for installing the application, and running the tests can be found below.
 
 ## About
 The required features for this assignment were an account creation form, event creation form, and an event display list. I chose to accomplish this without adding the overhead of persistent storage.  Accounts and events created are only persistent in memory and the app is reset on every refresh. 
