@@ -18,9 +18,9 @@ Run `ng serve` for a local dev server. Navigate to `http://localhost:4200/`. The
 ## Running unit tests
 
 Type `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-* [Event List Spec](https://github.com/philmerrell/meet-up-event-planner/blob/master/src/app/event-list/event-list.component.spec.ts) - This component's tests are what's know as "[shallow](https://angular.io/docs/ts/latest/guide/testing.html#!#shallow-component-test)" unit tests. Since we only want to test this component only, we are going to tell the 
+* [Event List Spec](https://github.com/philmerrell/meet-up-event-planner/blob/master/src/app/event-list/event-list.component.spec.ts) - This component's tests are what's know as "[shallow](https://angular.io/docs/ts/latest/guide/testing.html#!#shallow-component-test)" unit tests. Shallow tests allow us to test a component's logic and its template. Since we only want to test this component, we are going to tell the 
 angular compiler to ignore tags it doesn't recognize such as `<router-outlet>`.  We accomplish this by adding `NO_ERRORS_SCHEMA` to the tesing module's `schemas` metadata. This greatly simplifies testing a component's template. The trade off is the angular compiler will not 
-guard against misspelled and misused componets and directives. The tests for this component simply ensure the component can be created, display a certain message when the user is not logged in, display a welcome message when the user logs in and ensures the component gets a list of events to display.
+guard against misspelled and misused componets and directives. The particular tests for this component simply ensure the component can be created, display a certain message when the user is not logged in, display a welcome message when the user logs in and ensures the component gets a list of events to display.
 
 ## Running end-to-end tests
 
