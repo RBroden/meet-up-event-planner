@@ -8,8 +8,7 @@ The angular-cli builds in best practices such as bundling and minification for p
 * *Forms* - There are two options for creating forms in Angular 2 template-driven and reactive forms. Since reactive forms are created as properties on the component's class they 
 give us the ability to test forms in unit tests rather than depending on e2e tests to validate form input.  
 * *Unit Tests* - There are several types of unit tests. Isolated unit tests "examine an instance of a class all by itself without any dependence on Angular or any injected values."[[1]](https://angular.io/docs/ts/latest/guide/testing.html#!#isolated-unit-tests).
-This type of test lends itself well to testing items such as pipes and services–where Angular is not a main dependency.  [Shallow component tests](https://angular.io/docs/ts/latest/guide/testing.html#!#shallow-component-test)
-
+This type of test lends itself well to testing items such as pipes and services–where Angular is not a main dependency.
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. If you are running e2e tests it is necessary to run the `serve` conmmand first.
 
@@ -24,6 +23,5 @@ guard against misspelled and misused componets and directives. The tests for thi
 
 There are 2 end to end tests, which can be run by typing `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
 Before running the tests make sure the app is running locally via `ng serve`.
-
-Each end to end test is broken up into a spec file and a page object file. The [create-account.po.ts](https://github.com/philmerrell/meet-up-event-planner/blob/master/e2e/create-account/create-account.po.ts) file abstracts the actions of the tests into a page object. This makes our spec files easier to read. 
+* Each end to end test is broken up into a spec file and a page object file. The [create-account.po.ts](https://github.com/philmerrell/meet-up-event-planner/blob/master/e2e/create-account/create-account.po.ts) file abstracts the actions of the tests into a page object. This makes our spec files easier to read. 
 The [create-account.e2e.spec.ts](https://github.com/philmerrell/meet-up-event-planner/blob/master/e2e/create-account/create-account.e2e.spec.ts) file uses the page object file to navigate to the create account page, verfify navigation happened successfully, creates a user account, and verfiy the account was created successfully.  
