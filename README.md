@@ -2,15 +2,18 @@
 This app was created for the [Udacity Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree-by-google--nd802).
 
 Since one of my goals this year is to continue the transition from Angular to Angular 2, I chose to create this app with Angular 2 [angular-cli](https://github.com/angular/angular-cli).
-The angular-cli builds in best practices such as bundling and minification for production builds, linting, testing scaffolding and more.  Unit tests can be run via Karma using the `ng test` command.  e2e tests are run via Protractor using the `ng e2e` command.
+The angular-cli builds in best practices such as bundling and minification for production builds, linting, test scaffolding and more. Directions for install the application, and running the tests can be found below.
 
 ## High Level Lessons Learned
-* *Forms* - There are two options for creating forms in Angular 2 template-driven and reactive forms. Since reactive forms are created as properties on the component's class they 
-give us the ability to test forms in unit tests rather than depending on e2e tests to validate form input.  
-* *Unit Tests* - There are several types of unit tests. Isolated unit tests "examine an instance of a class all by itself without any dependence on Angular or any injected values."[[1]](https://angular.io/docs/ts/latest/guide/testing.html#!#isolated-unit-tests).
-This type of test lends itself well to testing items such as pipes and services–where Angular is not a main dependency.
+The required features for this assignment were an account creation form, event creation form, and an event display list. I chose to accomplish this without adding the overhead of persistent storage.  Accounts and events created are only persistent in memory and the app is reset on every refresh. 
+Using a framework such as Angular made the form validation for both account creation and event creation a cleaner development experience. Using [Twitter Bootstrap's v4 alpha](http://v4-alpha.getbootstrap.com/) made it much easier to design an application that looks great on both desktop and mobile. 
+In addition the [ChromeVox](http://www.chromevox.com/) plugin is a fantastic tool for ensuring web apps work well for screen readers.
+
+## Running the app locally
+Clone the git repository and install the [angular-cli](npm install -g angular-cli) tool globally `npm install -g angular-cli`. Run `npm install` from the project's directory. This will install the projects dependencies and allow you to run a development server described below.
+
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. If you are running e2e tests it is necessary to run the `serve` conmmand first.
+Run `ng serve` for a local dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Running unit tests
 
