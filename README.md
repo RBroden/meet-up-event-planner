@@ -4,7 +4,7 @@ This app was created for the [Udacity Senior Web Developer Nanodegree](https://w
 Since one of my goals this year is to continue the transition from Angular to Angular 2, I chose to create this app with Angular 2 [angular-cli](https://github.com/angular/angular-cli).
 The angular-cli builds in best practices such as bundling and minification for production builds, linting, test scaffolding and more. Directions for install the application, and running the tests can be found below.
 
-## High Level Lessons Learned
+## About
 The required features for this assignment were an account creation form, event creation form, and an event display list. I chose to accomplish this without adding the overhead of persistent storage.  Accounts and events created are only persistent in memory and the app is reset on every refresh. 
 Using a framework such as Angular made the form validation for both account creation and event creation a cleaner development experience. Using [Twitter Bootstrap's v4 alpha](http://v4-alpha.getbootstrap.com/) made it much easier to design an application that looks great on both desktop and mobile. 
 In addition the [ChromeVox](http://www.chromevox.com/) plugin is a fantastic tool for ensuring web apps work well for screen readers.
