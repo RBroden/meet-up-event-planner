@@ -33,7 +33,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
     ReactiveFormsModule,
     HttpModule,
     routing,
-    NgbModule,
+    NgbModule.forRoot(),
     TagInputModule
   ],
   providers: [appRoutingProviders, UserService, EventService, GoogleMapsService, AuthRouteGuard],
