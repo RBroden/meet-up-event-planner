@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="container">
-  <button *ngIf="currentUser" class="create-event-fab" placement="top" ngbTooltip="Create an event" (click)="goTo('/create-event')">
+  <button *ngIf="currentUser" class="create-event-fab" (click)="goTo('/create-event')">
     <i class="fa fa-plus"></i><span class="sr-only">Create an event</span>
   </button>
   <p *ngIf="currentUser">&nbsp;</p>

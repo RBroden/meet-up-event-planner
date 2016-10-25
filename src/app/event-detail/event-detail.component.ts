@@ -23,4 +23,8 @@ export class EventDetailComponent implements OnInit {
         });
   }
 
+  viewDirections(url) {
+    window.open(url, '_blank');
+  }
+
 }
