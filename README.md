@@ -1,11 +1,12 @@
 # Meet Up Event Planner
 This app was created for the [Udacity Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree-by-google--nd802).
 
-Since one of my goals this year is to continue the transition from Angular to Angular 2, I chose to create this app with Angular 2 [angular-cli](https://github.com/angular/angular-cli).
-The angular-cli builds in best practices such as bundling and minification for production builds, linting, test scaffolding and more. Directions for installing the application, and running the tests can be found below.
-
 ## About
-The required features for this assignment were an account creation form, event creation form, and an event display list. I chose to accomplish this without adding the overhead of persistent storage.  Accounts and events created are only persistent in memory and the app is reset on every refresh. 
+Since one of my goals this year is to continue the transition from Angular to Angular 2, I chose to create this app with Angular 2 [angular-cli](https://github.com/angular/angular-cli).
+The angular-cli builds in best practices such as bundling and minification for production builds, code linting, test scaffolding and more. Directions for installing the application, and running the tests can be found below.
+
+The required features for this assignment were an account creation form, event creation form, and an event display list. Particluar attention and detail were spent on form validation, ease of use on both desktop and mobile, and screen reader support. 
+I chose to accomplish this without adding the overhead of persistent storage.  Accounts and events created are only persistent in memory and the app is reset on every refresh. 
 Using a framework such as Angular made the form validation for both account creation and event creation a cleaner development experience. Using [Twitter Bootstrap's v4 alpha](http://v4-alpha.getbootstrap.com/) made it much easier to design an application that looks great on both desktop and mobile. 
 In addition the [ChromeVox](http://www.chromevox.com/) plugin is a fantastic tool for ensuring web apps work well for screen readers.
 
