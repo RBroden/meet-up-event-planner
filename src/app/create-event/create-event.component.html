@@ -47,7 +47,7 @@
                 <label class="col-form-label" for="end">End time</label>
                 <input [formControl]="createEventForm.controls['end']" [class.form-control-warning]="createEventForm.hasError('endDateIsBeforeStartDate') || !end.valid && end.touched" [class.form-control-success]="!createEventForm.hasError('endDateIsBeforeStartDate') && end.valid" type="datetime-local" class="form-control" name="end" id="end" required>
                 <div [hidden]="end.valid || !end.touched || start.hasError('invalidDate')"  class="form-control-feedback">A valid end time is required.</div>
-                <div [hidden]="!start.hasError('invalidDate') || !start.touched" class="form-control-feedback">End time cannot be in the past.</div>
+                <div [hidden]="!end.hasError('invalidDate') || !end.touched" class="form-control-feedback">End time cannot be in the past.</div>
                 <div [hidden]="!createEventForm.hasError('endDateIsBeforeStartDate') || !end.touched" class="form-control-feedback">End time must be greater than start time.</div>
               </div>
             </div>
