@@ -38,13 +38,7 @@ export class CreateAccountComponent implements OnInit {
     this.bio            = this.accountCreateForm.controls['bio'];
   }
 
-  ngOnInit() {
-    this.setInputFocus();
-  }
-
-  setInputFocus() {
-    console.log(this.fname);
-  }
+  ngOnInit() {}
 
   onSubmit() {
     let user = new User(this.fname.value, this.lname.value, this.email.value, this.password.value, this.verifyPassword.value, this.bio.value);

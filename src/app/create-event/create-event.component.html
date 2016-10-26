@@ -11,7 +11,7 @@
         <div>
           <div class="form-group" [class.has-warning]="!name.valid && name.touched" [class.has-success]="name.valid && name.touched">
             <label class="col-form-label" for="name">Event name</label>
-            <input [formControl]="createEventForm.controls['name']" [class.form-control-warning]="!name.valid && name.touched" [class.form-control-success]="name.valid" type="name" class="form-control" name="name" id="name" required autofocus>
+            <input [formControl]="createEventForm.controls['name']" [class.form-control-warning]="!name.valid && name.touched" [class.form-control-success]="name.valid" type="name" class="form-control" name="name" id="name" required myAutofocus>
             <div [hidden]="name.valid || !name.touched"  class="form-control-feedback">An event name is required.</div>
           </div>
           <div class="form-group" [class.has-warning]="!eventType.valid && eventType.touched" [class.has-success]="eventType.valid && eventType.touched">

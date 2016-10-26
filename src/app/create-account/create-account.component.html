@@ -11,7 +11,7 @@
           <div class="col-xs-12 col-sm-6">
             <div class="form-group" [class.has-warning]="!fname.valid && fname.touched" [class.has-success]="fname.valid && fname.touched">
               <label class="col-form-label" for="fname">First name</label>
-              <input [formControl]="accountCreateForm.controls['fname']" [class.form-control-warning]="!fname.valid && fname.touched" [class.form-control-success]="fname.valid" type="text" class="form-control" name="fname" id="fname" required autofocus>
+              <input [formControl]="accountCreateForm.controls['fname']" [class.form-control-warning]="!fname.valid && fname.touched" [class.form-control-success]="fname.valid" type="text" class="form-control" name="fname" id="fname" required myAutofocus>
               <div [hidden]="fname.valid || !fname.touched"  class="form-control-feedback">First name is required.</div>
             </div>
           </div>

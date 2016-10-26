@@ -17,6 +17,7 @@ import { AuthRouteGuard } from './shared/auth-route-guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ng2-tag-input';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { MyAutofocusDirective } from './shared/autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
     EventListComponent,
     HomeComponent,
     CreateEventComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    MyAutofocusDirective
   ],
   imports: [
     BrowserModule,
