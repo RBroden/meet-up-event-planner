@@ -37,14 +37,18 @@
               <div class="form-group" [class.has-warning]="!start.valid && start.touched" [class.has-success]="start.valid && start.touched">
                 <label class="col-form-label" for="start">Start time</label>
                 <input [formControl]="createEventForm.controls['start']" [class.form-control-warning]="!start.valid && start.touched" [class.form-control-success]="start.valid" (change)="updateEndTime()" type="datetime-local" class="form-control" name="start" id="start" required>
-                <div [hidden]="start.valid || !start.touched"  class="form-control-feedback">A valid start time is required.</div>
+                <div [hidden]="start.valid || !start.touched || start.hasError('invalidDate')"  class="form-control-feedback">A valid start time is required.</div>
+                <div [hidden]="!start.hasError('invalidDate') || !start.touched" class="form-control-feedback">Start time can't be in the past.</div>
+
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
-              <div class="form-group" [class.has-warning]="!end.valid && end.touched" [class.has-success]="end.valid && end.touched">
+              <div class="form-group" [class.has-warning]="createEventForm.hasError('endDateIsBeforeStartDate') && end.touched || !end.valid && end.touched" [class.has-success]="!createEventForm.hasError('endDateIsBeforeStartDate') && end.touched || end.valid && end.touched">
                 <label class="col-form-label" for="end">End time</label>
-                <input [formControl]="createEventForm.controls['end']" [class.form-control-warning]="!end.valid && end.touched" [class.form-control-success]="end.valid" type="datetime-local" class="form-control" name="end" id="end" required>
-                <div [hidden]="end.valid || !end.touched"  class="form-control-feedback">A valid end time is required.</div>
+                <input [formControl]="createEventForm.controls['end']" [class.form-control-warning]="createEventForm.hasError('endDateIsBeforeStartDate') || !end.valid && end.touched" [class.form-control-success]="!createEventForm.hasError('endDateIsBeforeStartDate') && end.valid" type="datetime-local" class="form-control" name="end" id="end" required>
+                <div [hidden]="end.valid || !end.touched || start.hasError('invalidDate')"  class="form-control-feedback">A valid end time is required.</div>
+                <div [hidden]="!start.hasError('invalidDate') || !start.touched" class="form-control-feedback">End time cannot be in the past.</div>
+                <div [hidden]="!createEventForm.hasError('endDateIsBeforeStartDate') || !end.touched" class="form-control-feedback">End time must be greater than start time.</div>
               </div>
             </div>
           </div>
@@ -59,12 +63,6 @@
             <div [hidden]="guests.value.length || !guestsTouched"  class="form-control-feedback">Guests are required to create events.</div>
             <small class="form-text text-muted">To add multiple guests, type a name and hit the enter key.</small>
           </div>
-          <!--<div class="form-group" [class.has-warning]="guests.touched && !guestList.length" [class.has-success]="guests.touched && guestList.length">
-            <label class="col-form-label" for="guests">Guest list</label>
-            <input [formControl]="createEventForm.controls['guests']" [class.form-control-warning]="!guestList.length || guests.touched" [class.form-control-success]="guestList.length" (keyup)="checkGuestList($event)" class="form-control" id="guests" placeholder="Hit enter to add multiple" type="text">
-            <div [hidden]="!guests.touched || guestList.length" class="form-control-feedback">At least one guest is required.</div>
-            <span class="guest-tag" *ngFor="let guest of guestList">{{guest}}<button (click)="removeGuest(guest)" [attr.aria-label]="delete" type="button"><i class="fa fa-close"></i></button></span>
-          </div>-->
           <div class="form-group">
             <label for="message">Message <small class="text-muted">(optional)</small></label>
             <textarea [formControl]="createEventForm.controls['message']" name="message" class="form-control" id="message" rows="3"></textarea>

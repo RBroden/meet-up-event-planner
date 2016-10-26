@@ -6,6 +6,7 @@ import { User } from '../services/user.model';
 import { GoogleMapsService } from '../services/google-maps.service';
 import { EventService } from '../services/event.service';
 import { Event } from '../services/event.model';
+import { dateValidator, endDateIsBeforeStartDateValidator } from './create-event.validators';
 
 @Component({
   selector: 'app-create-event',
@@ -49,12 +50,12 @@ export class CreateEventComponent implements OnInit {
       'name'      : ['', Validators.required],
       'eventType' : ['', Validators.required],
       'host'      : ['', Validators.required],
-      'start'     : ['', Validators.required],
-      'end'       : ['', Validators.required],
+      'start'     : ['', [ dateValidator, Validators.required ]],
+      'end'       : ['', [ dateValidator, Validators.required ]],
       'guests'    : [''],
       'location'  : ['', Validators.required],
       'message'   : ['']
-    });
+    }, { validator: endDateIsBeforeStartDateValidator('start', 'end') } );
 
     this.name = this.createEventForm.controls['name'];
     this.eventType = this.createEventForm.controls['eventType'];
