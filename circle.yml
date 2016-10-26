@@ -1,0 +1,13 @@
+# Dependencies
+
+dependencies:
+  override:
+    - npm install -g angular-cli
+    - npm install
+
+# Test Commands
+
+test:
+  override:
+    - npm run test
+    # - npm run e2e
