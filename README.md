@@ -1,4 +1,4 @@
-# Meet Up Event Planner
+# Meet Up Event Planner [![CircleCI](https://circleci.com/gh/philmerrell/meet-up-event-planner.svg?style=svg)](https://circleci.com/gh/philmerrell/meet-up-event-planner)
 This app was created for the [Udacity Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree-by-google--nd802).
 
 ## About
