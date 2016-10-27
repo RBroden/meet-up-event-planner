@@ -23,5 +23,6 @@ dependencies:
 
 test:
   override:
-    - nvm use 6.2 && npm run test
+    - nvm use 6.2
+    - ng test --watch=false
     #- npm run e2e
