@@ -1,7 +1,9 @@
 # Dependencies
 
 dependencies:
+  pre:
   override:
+    - nvm use 6.2
     - npm install -g angular-cli
     - npm install
 
@@ -9,5 +11,5 @@ dependencies:
 
 test:
   override:
-    - npm run test
-    # - npm run e2e
+    - nvm use 6.2 && npm run test
+    #- npm run e2e
